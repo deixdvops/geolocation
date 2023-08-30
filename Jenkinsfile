@@ -16,10 +16,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/deixdvops/geolocation.git'
             }
         }
-         stage('Sonarque scan'){
+         stage("Sonarque scan"){
             steps{
                 withSonarQubeEnv('sonarQube') {
                 sh'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=deixdvops_geolocation3'
+                }
             }
         }
         stage('code build'){
