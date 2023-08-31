@@ -18,7 +18,7 @@ pipeline {
         }
          stage("Sonarque scan"){
             steps{
-                withSonarQubeEnv('sonar') {
+                withSonarQubeEnv('SONAR_RUNNER') {
                 sh'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=deixdvops_geolocation'                }
             }
         }
