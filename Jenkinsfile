@@ -39,6 +39,14 @@ pipeline {
                 }
             }
         }
+         stage('upload Image to ecr'){
+            steps{
+                script{
+                    docker.withRegistry("https://"+registry,"ecr:us-east-1:"+registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+        }
        
             //deploy the image that is in ECR to our EKS cluster
         stage('Kube Deploy to k8s'){
